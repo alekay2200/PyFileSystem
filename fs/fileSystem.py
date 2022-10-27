@@ -1,4 +1,4 @@
-from os import listdir, mkdir, getcwd, rmdir, remove
+from os import listdir, mkdir, rmdir, remove
 from os.path import isfile, join, isdir
 from typing import List
 from shutil import rmtree, copy
