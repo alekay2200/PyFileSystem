@@ -61,7 +61,7 @@ def get_files(path: str = "./", extension: bool=True, files_extensions: List[str
     for e in elements:
         if isfile(join(path, e)):
             op = e[e.find(".")+1:]
-            if files_extensions != [] and not e[e.find(".")+1:] in files_extensions:
+            if files_extensions != [] and not e[e.rfind(".")+1:] in files_extensions:
                 continue
             if extension:
                 files.append(e)
