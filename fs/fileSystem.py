@@ -60,13 +60,19 @@ def get_files(path: str = "./", extension: bool=True, files_extensions: List[str
 
     for e in elements:
         if isfile(join(path, e)):
-            op = e[e.find(".")+1:]
-            if files_extensions != [] and not e[e.find(".")+1:] in files_extensions:
-                continue
-            if extension:
-                files.append(e)
+            if files_extensions != []:
+                for exe in files_extensions:
+                    _extension = e[len(e) - len(exe) -1:]
+                    if _extension[0] == "." and _extension[1:] == exe:
+                        if extension:
+                            files.append(e)
+                        else:
+                            files.append(e[:e.find(".")])
             else:
-                files.append(e[:e.find(".")])
+                if extension:
+                    files.append(e)
+                else:
+                    files.append(e[:e.find(".")])
 
     return files
 
